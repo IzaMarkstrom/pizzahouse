@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,7 @@ Route::post('/pizzas', 'App\Http\Controllers\PizzaController@store');
 // ID will otherwise show /pizzas/create as the ID and not the create page
 Route::get('/pizzas/{id}', 'App\Http\Controllers\PizzaController@show');
 Route::delete('/pizzas/{id}', 'App\Http\Controllers\PizzaController@destroy');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
