@@ -30,4 +30,29 @@ class PizzaController extends Controller
     public function create() {
         return view('pizzas.create');
     }
+
+    public function store() {
+        // error_log(request('name'));
+
+        $pizza = new Pizza();
+
+        $pizza->name = request('name');
+        $pizza->type = request('type');
+        $pizza->base = request('base');
+        $pizza->toppings = request('toppings');
+
+        // We're taking the instance of the pizza and saving it to the database.
+        // because it's and instance of the pizza model, it knows to save it to the pizzas table.
+        $pizza->save();
+
+        // This message will be session data and will be available on the next request.
+        return redirect('/')->with('msg', 'Thanks for your order');
+    }
+
+    public function destroy($id) {
+        $pizza = Pizza::findOrFail($id);
+        $pizza->delete();
+
+        return redirect('/pizzas');
+    }
 }

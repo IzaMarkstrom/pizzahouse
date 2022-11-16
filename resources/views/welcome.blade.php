@@ -21,6 +21,8 @@
             <div class="title m-b-md">
                 Hamstah House Pizza
             </div>
+            <p class="msg">{{ session('msg') }}</p>
+            <a href="/pizzas/create">Order a Pizza</a>
         </div>
 
 @endsection
