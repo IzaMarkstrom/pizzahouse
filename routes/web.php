@@ -18,5 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get('/pizzas', 'App\Http\Controllers\PizzaController@index');
-
+Route::get('/pizzas/create', 'App\Http\Controllers\PizzaController@create');
+// ID will otherwise show /pizzas/create as the ID and not the create page
 Route::get('/pizzas/{id}', 'App\Http\Controllers\PizzaController@show');
